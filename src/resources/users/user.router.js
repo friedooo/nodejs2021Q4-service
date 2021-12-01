@@ -8,4 +8,10 @@ router.route('/').get(async (req, res) => {
   res.json(users.map(User.toResponse));
 });
 
+router.route('/').post(async (req, res) => {
+  const newUser = await usersService.createUser(req.body);
+  // map user fields to exclude secret fields like "password"
+  res.json(User.toResponse(newUser));
+});
+
 module.exports = router;
