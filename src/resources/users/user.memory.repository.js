@@ -3,7 +3,7 @@ const db = require('../../data/db');
 
 const getAll = async () => db.users;
 
-const getById = async (id) => {
+const findById = async (id) => {
   const foundedUser = await db.users.find((user) => user.id === id);
   return foundedUser;
 };
@@ -14,4 +14,4 @@ const create = async (user) => {
   return newUser;
 };
 
-module.exports = { getAll, getById, create };
+module.exports = { getAll, findById, create };
