@@ -21,10 +21,10 @@ const addBoard = (body) => {
   return newBoard;
 };
 
-// const deleteUser = (id) => {
-//   db.users = db.users.filter((user) => user.id !== id);
-//   return `user ${id} has been removed`;
-// };
+const deleteBoard = (id) => {
+  db.boards = db.boards.filter((board) => board.id !== id);
+  return `board ${id} has been removed`;
+};
 
 // const updateUser = (id, body) => {
 //   db.users = db.users.map((user) => (user.id === id ? { id, ...body } : user));
@@ -37,5 +37,6 @@ module.exports = {
   getAllBoards,
   getBoard,
   addBoard,
+  deleteBoard,
   // getUser, addUser, deleteUser, updateUser
 };

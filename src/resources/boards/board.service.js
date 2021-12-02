@@ -69,23 +69,23 @@ const postBoardOpts = {
   },
 };
 
-// const deleteUserOpts = {
-//   method: 'DELETE',
-//   schema: {
-//     response: {
-//       200: {
-//         type: 'object',
-//         properties: {
-//           message: { type: 'string' },
-//         },
-//       },
-//     },
-//   },
-//   handler: async (req, reply) => {
-//     const { id } = await req.params;
-//     await reply.send(usersRepo.deleteUser(id));
-//   },
-// };
+const deleteBoardOpts = {
+  method: 'DELETE',
+  schema: {
+    response: {
+      200: {
+        type: 'object',
+        properties: {
+          message: { type: 'string' },
+        },
+      },
+    },
+  },
+  handler: async (req, reply) => {
+    const { id } = await req.params;
+    await reply.send(boardsRepo.deleteBoard(id));
+  },
+};
 
 // const updateUserOpts = {
 //   method: 'PUT',
@@ -104,6 +104,6 @@ module.exports = {
   getBoardsOpts,
   getBoardOpts,
   postBoardOpts,
-  // deleteUserOpts,
+  deleteBoardOpts,
   // updateUserOpts,
 };
