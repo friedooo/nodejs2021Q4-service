@@ -6,7 +6,7 @@ const {
   postUserOpts,
   deleteUserOpts,
   updateUserOpts,
-} = require('./user.service');
+} = require('./board.service');
 
 function router(fastify, options, done) {
   // Get all items
