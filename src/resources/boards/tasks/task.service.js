@@ -29,18 +29,19 @@ const getTasksOpts = {
   },
 };
 
-// const getBoardOpts = {
-//   method: 'GET',
-//   schema: {
-//     response: {
-//       200: Board,
-//     },
-//   },
-//   handler: async (req, reply) => {
-//     const { id } = await req.params;
-//     await reply.send(boardsRepo.getBoard(id));
-//   },
-// };
+const getTaskOpts = {
+  method: 'GET',
+  schema: {
+    response: {
+      200: Task,
+    },
+  },
+  handler: async (req, reply) => {
+    const boardId = req.url.split('/')[2];
+    const taskId = req.url.split('/')[4];
+    await reply.send(tasksRepo.getTask(boardId, taskId));
+  },
+};
 
 // const postBoardOpts = {
 //   method: 'POST',
@@ -95,4 +96,5 @@ const getTasksOpts = {
 
 module.exports = {
   getTasksOpts,
+  getTaskOpts,
 };

@@ -4,10 +4,12 @@ const db = require('../../../data/db');
 const getAllTasks = (boardId) => db.tasks; // Вариант для тестов
 // db.tasks.filter((task) => task.boardId === boardId); // Более правильный вариант
 
-// const getBoard = (id) => {
-//   const board = db.boards.find((elem) => elem.id === id);
-//   return board;
-// };
+const getTask = (boardId, taskId) => {
+  const task = db.tasks.find(
+    (elem) => elem.boardId === boardId && elem.id === taskId
+  );
+  return task;
+};
 
 // const addBoard = (body) => {
 //   const { title, columns } = body;
@@ -38,4 +40,5 @@ const getAllTasks = (boardId) => db.tasks; // Вариант для тестов
 
 module.exports = {
   getAllTasks,
+  getTask,
 };
