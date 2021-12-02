@@ -1,15 +1,12 @@
 // const { v4: uuidv4 } = require('uuid');
 const db = require('../../data/db');
 
-const getAll = () => db.users;
+const getAllUsers = () => db.users;
 
-// const getAll = (req, reply) => {
-//   const { id } = req.params;
-
-//   const item = items.find((elem) => elem.id === id);
-
-//   reply.send(item);
-// };
+const getUser = (id) => {
+  const user = db.users.find((elem) => elem.id === id);
+  return user;
+};
 
 // const addItem = (req, reply) => {
 //   const { name } = req.body;
@@ -42,4 +39,4 @@ const getAll = () => db.users;
 //   reply.send(item);
 // };
 
-module.exports = { getAll };
+module.exports = { getAllUsers, getUser };

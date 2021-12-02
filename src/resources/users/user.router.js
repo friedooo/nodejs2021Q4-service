@@ -1,7 +1,8 @@
 // const User = require('./user.model');
 
 const {
-  getAllOpts,
+  getUsersOpts,
+  getUserOpts,
   // getItem,
   // addItem,
   // deleteItem,
@@ -10,7 +11,8 @@ const {
 
 function router(fastify, options, done) {
   // Get all items
-  fastify.get('/users', getAllOpts);
+  fastify.get('/users', getUsersOpts);
+  fastify.get('/users/:id', getUserOpts);
 
   // // Get single items
   // fastify.get('/items/:id', getItemOpts);

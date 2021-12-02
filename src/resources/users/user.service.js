@@ -11,8 +11,7 @@ const UserGet = {
   },
 };
 
-// Options for get all items
-const getAllOpts = {
+const getUsersOpts = {
   schema: {
     response: {
       200: {
@@ -22,18 +21,21 @@ const getAllOpts = {
     },
   },
   handler: async (req, reply) => {
-    await reply.send(usersRepo.getAll());
+    await reply.send(usersRepo.getAllUsers());
   },
 };
 
-// const getItemOpts = {
-//   schema: {
-//     response: {
-//       200: Item,
-//     },
-//   },
-//   handler: getItem,
-// };
+const getUserOpts = {
+  schema: {
+    response: {
+      200: UserGet,
+    },
+  },
+  handler: async (req, reply) => {
+    const { id } = await req.params;
+    await reply.send(usersRepo.getUser(id));
+  },
+};
 
 // const postItemOpts = {
 //   schema: {
@@ -75,5 +77,6 @@ const getAllOpts = {
 // };
 
 module.exports = {
-  getAllOpts,
+  getUsersOpts,
+  getUserOpts,
 };
