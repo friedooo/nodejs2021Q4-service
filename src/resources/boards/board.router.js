@@ -8,7 +8,11 @@ const {
   updateBoardOpts,
 } = require('./board.service');
 
-const { getTasksOpts, getTaskOpts } = require('./tasks/task.service');
+const {
+  getTasksOpts,
+  getTaskOpts,
+  postTaskOpts,
+} = require('./tasks/task.service');
 
 function boardRouter(fastify, options, done) {
   fastify.get('/boards', getBoardsOpts);
@@ -19,6 +23,7 @@ function boardRouter(fastify, options, done) {
 
   fastify.get('/boards/:id/tasks', getTasksOpts);
   fastify.get('/boards/:id/tasks/:id', getTaskOpts);
+  fastify.post('/boards/:id/tasks', postTaskOpts);
 
   done();
 }

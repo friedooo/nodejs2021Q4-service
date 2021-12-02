@@ -11,18 +11,22 @@ const getTask = (boardId, taskId) => {
   return task;
 };
 
-// const addBoard = (body) => {
-//   const { title, columns } = body;
-//   const newBoard = {
-//     id: uuidv4(),
-//     title,
-//     columns,
-//   };
+const addTask = (boardId, body) => {
+  const { title, order, description, userId, columnId } = body;
+  const newTask = {
+    id: uuidv4(),
+    title,
+    order,
+    description,
+    userId,
+    boardId,
+    columnId,
+  };
 
-//   db.boards = [...db.boards, newBoard];
+  db.tasks = [...db.tasks, newTask];
 
-//   return newBoard;
-// };
+  return newTask;
+};
 
 // const deleteBoard = (id) => {
 //   db.boards = db.boards.filter((board) => board.id !== id);
@@ -41,4 +45,5 @@ const getTask = (boardId, taskId) => {
 module.exports = {
   getAllTasks,
   getTask,
+  addTask,
 };

@@ -7,9 +7,9 @@ const Task = {
     title: { type: 'string' },
     order: { type: 'number' },
     description: { type: 'string' },
-    userId: { type: 'string' },
+    userId: { type: ['string', 'null'] },
     boardId: { type: 'string' },
-    columnId: { type: 'string' },
+    columnId: { type: ['string', 'null'] },
   },
 };
 
@@ -43,25 +43,37 @@ const getTaskOpts = {
   },
 };
 
-// const postBoardOpts = {
-//   method: 'POST',
-//   schema: {
-//     body: {
-//       type: 'object',
-//       required: ['title', 'columns'],
-//       properties: {
-//         title: { type: 'string' },
-//         columns: { type: 'array' },
-//       },
-//     },
-//     response: {
-//       201: Board,
-//     },
-//   },
-//   handler: async (req, reply) => {
-//     await reply.code(201).send(boardsRepo.addBoard(req.body));
-//   },
-// };
+const postTaskOpts = {
+  method: 'POST',
+  schema: {
+    body: {
+      type: 'object',
+      required: [
+        'title',
+        'order',
+        'description',
+        'userId',
+        // 'boardId',
+        'columnId',
+      ],
+      properties: {
+        title: { type: 'string' },
+        order: { type: 'number' },
+        description: { type: 'string' },
+        userId: { type: ['string', 'null'] },
+        // boardId: { type: ['string', 'null'] },
+        columnId: { type: ['string', 'null'] },
+      },
+    },
+    response: {
+      201: Task,
+    },
+  },
+  handler: async (req, reply) => {
+    const boardId = req.url.split('/')[2];
+    await reply.code(201).send(tasksRepo.addTask(boardId, req.body));
+  },
+};
 
 // const deleteBoardOpts = {
 //   method: 'DELETE',
@@ -97,4 +109,5 @@ const getTaskOpts = {
 module.exports = {
   getTasksOpts,
   getTaskOpts,
+  postTaskOpts,
 };
