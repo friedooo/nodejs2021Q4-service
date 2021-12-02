@@ -8,19 +8,18 @@ const getBoard = (id) => {
   return board;
 };
 
-// const addUser = (body) => {
-//   const { name, login, password } = body;
-//   const newUser = {
-//     id: uuidv4(),
-//     name,
-//     login,
-//     password,
-//   };
+const addBoard = (body) => {
+  const { title, columns } = body;
+  const newBoard = {
+    id: uuidv4(),
+    title,
+    columns,
+  };
 
-//   db.users = [...db.users, newUser];
+  db.boards = [...db.boards, newBoard];
 
-//   return newUser;
-// };
+  return newBoard;
+};
 
 // const deleteUser = (id) => {
 //   db.users = db.users.filter((user) => user.id !== id);
@@ -37,5 +36,6 @@ const getBoard = (id) => {
 module.exports = {
   getAllBoards,
   getBoard,
+  addBoard,
   // getUser, addUser, deleteUser, updateUser
 };

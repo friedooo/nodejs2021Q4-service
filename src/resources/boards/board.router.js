@@ -3,7 +3,7 @@
 const {
   getBoardsOpts,
   getBoardOpts,
-  // postUserOpts,
+  postBoardOpts,
   // deleteUserOpts,
   // updateUserOpts,
 } = require('./board.service');
@@ -11,7 +11,7 @@ const {
 function boardRouter(fastify, options, done) {
   fastify.get('/boards', getBoardsOpts);
   fastify.get('/boards/:id', getBoardOpts);
-  // fastify.post('/users', postUserOpts);
+  fastify.post('/boards', postBoardOpts);
   // fastify.delete('/users/:id', deleteUserOpts);
   // fastify.put('/users/:id', updateUserOpts);
 

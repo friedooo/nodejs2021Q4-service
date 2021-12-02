@@ -49,26 +49,25 @@ const getBoardOpts = {
   },
 };
 
-// const postUserOpts = {
-//   method: 'POST',
-//   schema: {
-//     body: {
-//       type: 'object',
-//       required: ['name', 'login', 'password'],
-//       properties: {
-//         name: { type: 'string' },
-//         login: { type: 'string' },
-//         password: { type: 'string' },
-//       },
-//     },
-//     response: {
-//       201: User,
-//     },
-//   },
-//   handler: async (req, reply) => {
-//     await reply.code(201).send(usersRepo.addUser(req.body));
-//   },
-// };
+const postBoardOpts = {
+  method: 'POST',
+  schema: {
+    body: {
+      type: 'object',
+      required: ['title', 'columns'],
+      properties: {
+        title: { type: 'string' },
+        columns: { type: 'array' },
+      },
+    },
+    response: {
+      201: Board,
+    },
+  },
+  handler: async (req, reply) => {
+    await reply.code(201).send(boardsRepo.addBoard(req.body));
+  },
+};
 
 // const deleteUserOpts = {
 //   method: 'DELETE',
@@ -104,7 +103,7 @@ const getBoardOpts = {
 module.exports = {
   getBoardsOpts,
   getBoardOpts,
-  // postUserOpts,
+  postBoardOpts,
   // deleteUserOpts,
   // updateUserOpts,
 };
