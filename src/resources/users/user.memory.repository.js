@@ -22,13 +22,10 @@ const addUser = (body) => {
   return newUser;
 };
 
-// const deleteItem = (req, reply) => {
-//   const { id } = req.params;
-
-//   items = items.filter((item) => item.id !== id);
-
-//   reply.send({ message: `Item ${id} has been removed` });
-// };
+const deleteUser = (id) => {
+  db.users = db.users.filter((user) => user.id !== id);
+  return `user ${id} has been removed`;
+};
 
 // const updateItem = (req, reply) => {
 //   const { id } = req.params;
@@ -41,4 +38,4 @@ const addUser = (body) => {
 //   reply.send(item);
 // };
 
-module.exports = { getAllUsers, getUser, addUser };
+module.exports = { getAllUsers, getUser, addUser, deleteUser };

@@ -59,19 +59,22 @@ const postUserOpts = {
   },
 };
 
-// const deleteItemOpts = {
-//   schema: {
-//     response: {
-//       200: {
-//         type: 'object',
-//         properties: {
-//           message: { type: 'string' },
-//         },
-//       },
-//     },
-//   },
-//   handler: deleteItem,
-// };
+const deleteUserOpts = {
+  schema: {
+    response: {
+      200: {
+        type: 'object',
+        properties: {
+          message: { type: 'string' },
+        },
+      },
+    },
+  },
+  handler: async (req, reply) => {
+    const { id } = await req.params;
+    await reply.send(usersRepo.deleteUser(id));
+  },
+};
 
 // const updateItemOpts = {
 //   schema: {
@@ -86,4 +89,5 @@ module.exports = {
   getUsersOpts,
   getUserOpts,
   postUserOpts,
+  deleteUserOpts,
 };

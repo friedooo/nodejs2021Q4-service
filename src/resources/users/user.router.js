@@ -4,9 +4,7 @@ const {
   getUsersOpts,
   getUserOpts,
   postUserOpts,
-  // getItem,
-  // addItem,
-  // deleteItem,
+  deleteUserOpts,
   // updateItem,
 } = require('./user.service');
 
@@ -15,6 +13,7 @@ function router(fastify, options, done) {
   fastify.get('/users', getUsersOpts);
   fastify.get('/users/:id', getUserOpts);
   fastify.post('/users', postUserOpts);
+  fastify.delete('/users/:id', deleteUserOpts);
 
   // // Get single items
   // fastify.get('/items/:id', getItemOpts);
