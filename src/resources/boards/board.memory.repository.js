@@ -26,17 +26,19 @@ const deleteBoard = (id) => {
   return `board ${id} has been removed`;
 };
 
-// const updateUser = (id, body) => {
-//   db.users = db.users.map((user) => (user.id === id ? { id, ...body } : user));
-//   const user = db.users.find((elem) => elem.id === id);
+const updateBoard = (id, body) => {
+  db.boards = db.boards.map((board) =>
+    board.id === id ? { id, ...body } : board
+  );
+  const board = db.boards.find((elem) => elem.id === id);
 
-//   return user;
-// };
+  return board;
+};
 
 module.exports = {
   getAllBoards,
   getBoard,
   addBoard,
   deleteBoard,
-  // getUser, addUser, deleteUser, updateUser
+  updateBoard,
 };

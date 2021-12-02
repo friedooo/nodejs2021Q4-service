@@ -87,23 +87,23 @@ const deleteBoardOpts = {
   },
 };
 
-// const updateUserOpts = {
-//   method: 'PUT',
-//   schema: {
-//     response: {
-//       200: User,
-//     },
-//   },
-//   handler: async (req, reply) => {
-//     const { id } = await req.params;
-//     await reply.send(usersRepo.updateUser(id, req.body));
-//   },
-// };
+const updateBoardOpts = {
+  method: 'PUT',
+  schema: {
+    response: {
+      200: Board,
+    },
+  },
+  handler: async (req, reply) => {
+    const { id } = await req.params;
+    await reply.send(boardsRepo.updateBoard(id, req.body));
+  },
+};
 
 module.exports = {
   getBoardsOpts,
   getBoardOpts,
   postBoardOpts,
   deleteBoardOpts,
-  // updateUserOpts,
+  updateBoardOpts,
 };
