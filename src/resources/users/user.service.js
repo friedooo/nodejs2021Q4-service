@@ -1,7 +1,79 @@
 const usersRepo = require('./user.memory.repository');
 
-const getAll = () => usersRepo.getAll();
-const getById = (id) => usersRepo.findById(id);
-const createUser = (user) => usersRepo.create(user);
+const UserGet = {
+  method: 'GET',
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    name: { type: 'string' },
+    login: { type: 'string' },
+    // password: { type: 'string' },
+  },
+};
 
-module.exports = { getAll, createUser, getById };
+// Options for get all items
+const getAllOpts = {
+  schema: {
+    response: {
+      200: {
+        type: 'array',
+        items: UserGet,
+      },
+    },
+  },
+  handler: async (req, reply) => {
+    await reply.send(usersRepo.getAll());
+  },
+};
+
+// const getItemOpts = {
+//   schema: {
+//     response: {
+//       200: Item,
+//     },
+//   },
+//   handler: getItem,
+// };
+
+// const postItemOpts = {
+//   schema: {
+//     body: {
+//       type: 'object',
+//       required: ['name'],
+//       properties: {
+//         name: { type: 'string' },
+//       },
+//     },
+//     response: {
+//       201: Item,
+//     },
+//   },
+//   handler: addItem,
+// };
+
+// const deleteItemOpts = {
+//   schema: {
+//     response: {
+//       200: {
+//         type: 'object',
+//         properties: {
+//           message: { type: 'string' },
+//         },
+//       },
+//     },
+//   },
+//   handler: deleteItem,
+// };
+
+// const updateItemOpts = {
+//   schema: {
+//     response: {
+//       200: Item,
+//     },
+//   },
+//   handler: updateItem,
+// };
+
+module.exports = {
+  getAllOpts,
+};
