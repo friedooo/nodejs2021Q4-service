@@ -1,6 +1,6 @@
 const usersRepo = require('./user.memory.repository');
 
-const UserGet = {
+const User = {
   type: 'object',
   properties: {
     id: { type: 'string' },
@@ -10,23 +10,13 @@ const UserGet = {
   },
 };
 
-const UserPost = {
-  type: 'object',
-  properties: {
-    id: { type: 'string' },
-    name: { type: 'string' },
-    login: { type: 'string' },
-    password: { type: 'string' },
-  },
-};
-
 const getUsersOpts = {
   method: 'GET',
   schema: {
     response: {
       200: {
         type: 'array',
-        items: UserGet,
+        items: User,
       },
     },
   },
@@ -39,7 +29,7 @@ const getUserOpts = {
   method: 'GET',
   schema: {
     response: {
-      200: UserGet,
+      200: User,
     },
   },
   handler: async (req, reply) => {
@@ -49,6 +39,7 @@ const getUserOpts = {
 };
 
 const postUserOpts = {
+  method: 'POST',
   schema: {
     body: {
       type: 'object',
@@ -60,11 +51,11 @@ const postUserOpts = {
       },
     },
     response: {
-      201: UserPost,
+      201: User,
     },
   },
   handler: async (req, reply) => {
-    await reply.send(usersRepo.addUser(req.body));
+    await reply.code(201).send(usersRepo.addUser(req.body));
   },
 };
 
