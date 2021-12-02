@@ -39,7 +39,13 @@ const getTaskOpts = {
   handler: async (req, reply) => {
     const boardId = req.url.split('/')[2];
     const taskId = req.url.split('/')[4];
-    await reply.send(tasksRepo.getTask(boardId, taskId));
+
+    const response = await tasksRepo.getTask(boardId, taskId);
+    if (response) {
+      await reply.send(response);
+    } else {
+      reply.code(404).send({ message: 'Not Found' });
+    }
   },
 };
 
@@ -75,23 +81,23 @@ const postTaskOpts = {
   },
 };
 
-// const deleteBoardOpts = {
-//   method: 'DELETE',
-//   schema: {
-//     response: {
-//       200: {
-//         type: 'object',
-//         properties: {
-//           message: { type: 'string' },
-//         },
-//       },
-//     },
-//   },
-//   handler: async (req, reply) => {
-//     const { id } = await req.params;
-//     await reply.send(boardsRepo.deleteBoard(id));
-//   },
-// };
+const deleteTaskOpts = {
+  method: 'DELETE',
+  schema: {
+    response: {
+      200: {
+        type: 'object',
+        properties: {
+          message: { type: 'string' },
+        },
+      },
+    },
+  },
+  handler: async (req, reply) => {
+    const taskId = req.url.split('/')[4];
+    await reply.send(tasksRepo.deleteTask(taskId));
+  },
+};
 
 // const updateBoardOpts = {
 //   method: 'PUT',
@@ -110,4 +116,5 @@ module.exports = {
   getTasksOpts,
   getTaskOpts,
   postTaskOpts,
+  deleteTaskOpts,
 };

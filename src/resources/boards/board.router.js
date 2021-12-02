@@ -12,6 +12,7 @@ const {
   getTasksOpts,
   getTaskOpts,
   postTaskOpts,
+  deleteTaskOpts,
 } = require('./tasks/task.service');
 
 function boardRouter(fastify, options, done) {
@@ -24,6 +25,7 @@ function boardRouter(fastify, options, done) {
   fastify.get('/boards/:id/tasks', getTasksOpts);
   fastify.get('/boards/:id/tasks/:id', getTaskOpts);
   fastify.post('/boards/:id/tasks', postTaskOpts);
+  fastify.delete('/boards/:id/tasks/:id', deleteTaskOpts);
 
   done();
 }

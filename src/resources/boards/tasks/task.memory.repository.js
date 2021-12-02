@@ -28,10 +28,10 @@ const addTask = (boardId, body) => {
   return newTask;
 };
 
-// const deleteBoard = (id) => {
-//   db.boards = db.boards.filter((board) => board.id !== id);
-//   return `board ${id} has been removed`;
-// };
+const deleteTask = (taskId) => {
+  db.tasks = db.tasks.filter((task) => task.id !== taskId);
+  return `task ${taskId} has been removed`;
+};
 
 // const updateBoard = (id, body) => {
 //   db.boards = db.boards.map((board) =>
@@ -46,4 +46,5 @@ module.exports = {
   getAllTasks,
   getTask,
   addTask,
+  deleteTask,
 };

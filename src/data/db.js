@@ -36,7 +36,7 @@ module.exports = {
       columnId: 'ccba6fef-81fc-48e7-ba5e-f797cd86a8d9', // column 1 id
     },
     {
-      id: '33025884-890d-410b-8159-5555030a528b',
+      id: '8f5227e1-e1f7-49a1-a603-224989c1dbf7',
       title: 'task 2',
       order: 2,
       description: 'task 2 desc',
@@ -45,7 +45,7 @@ module.exports = {
       columnId: '298aa2ce-f96c-4aba-baab-c34c49f5b5c9', // column 2 id
     },
     {
-      id: 'random id',
+      id: 'random-id',
       title: 'task 3',
       order: 3,
       description: 'task 3 desc',

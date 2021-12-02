@@ -45,7 +45,12 @@ const getBoardOpts = {
   },
   handler: async (req, reply) => {
     const { id } = await req.params;
-    await reply.send(boardsRepo.getBoard(id));
+    const response = await boardsRepo.getBoard(id);
+    if (response) {
+      await reply.send(response);
+    } else {
+      reply.code(404).send({ message: 'Not Found' });
+    }
   },
 };
 
