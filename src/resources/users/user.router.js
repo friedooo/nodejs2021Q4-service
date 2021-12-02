@@ -8,8 +8,7 @@ const {
   updateUserOpts,
 } = require('./user.service');
 
-function router(fastify, options, done) {
-  // Get all items
+function userRouter(fastify, options, done) {
   fastify.get('/users', getUsersOpts);
   fastify.get('/users/:id', getUserOpts);
   fastify.post('/users', postUserOpts);
@@ -19,4 +18,4 @@ function router(fastify, options, done) {
   done();
 }
 
-module.exports = router;
+module.exports = userRouter;
