@@ -3,10 +3,10 @@ const db = require('../../data/db');
 
 const getAllBoards = () => db.boards;
 
-// const getUser = (id) => {
-//   const user = db.users.find((elem) => elem.id === id);
-//   return user;
-// };
+const getBoard = (id) => {
+  const board = db.boards.find((elem) => elem.id === id);
+  return board;
+};
 
 // const addUser = (body) => {
 //   const { name, login, password } = body;
@@ -36,5 +36,6 @@ const getAllBoards = () => db.boards;
 
 module.exports = {
   getAllBoards,
+  getBoard,
   // getUser, addUser, deleteUser, updateUser
 };

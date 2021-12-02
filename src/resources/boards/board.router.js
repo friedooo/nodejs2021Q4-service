@@ -2,7 +2,7 @@
 
 const {
   getBoardsOpts,
-  // getUserOpts,
+  getBoardOpts,
   // postUserOpts,
   // deleteUserOpts,
   // updateUserOpts,
@@ -10,7 +10,7 @@ const {
 
 function boardRouter(fastify, options, done) {
   fastify.get('/boards', getBoardsOpts);
-  // fastify.get('/users/:id', getUserOpts);
+  fastify.get('/boards/:id', getBoardOpts);
   // fastify.post('/users', postUserOpts);
   // fastify.delete('/users/:id', deleteUserOpts);
   // fastify.put('/users/:id', updateUserOpts);

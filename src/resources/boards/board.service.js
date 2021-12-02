@@ -36,18 +36,18 @@ const getBoardsOpts = {
   },
 };
 
-// const getUserOpts = {
-//   method: 'GET',
-//   schema: {
-//     response: {
-//       200: User,
-//     },
-//   },
-//   handler: async (req, reply) => {
-//     const { id } = await req.params;
-//     await reply.send(usersRepo.getUser(id));
-//   },
-// };
+const getBoardOpts = {
+  method: 'GET',
+  schema: {
+    response: {
+      200: Board,
+    },
+  },
+  handler: async (req, reply) => {
+    const { id } = await req.params;
+    await reply.send(boardsRepo.getBoard(id));
+  },
+};
 
 // const postUserOpts = {
 //   method: 'POST',
@@ -103,7 +103,7 @@ const getBoardsOpts = {
 
 module.exports = {
   getBoardsOpts,
-  // getUserOpts,
+  getBoardOpts,
   // postUserOpts,
   // deleteUserOpts,
   // updateUserOpts,
