@@ -44,5 +44,14 @@ module.exports = {
       boardId: 'ad9b8249-5c2b-4a54-85d3-e7b61bbda5a4', // board 1 id
       columnId: '298aa2ce-f96c-4aba-baab-c34c49f5b5c9', // column 2 id
     },
+    {
+      id: 'random id',
+      title: 'task 3',
+      order: 3,
+      description: 'task 3 desc',
+      userId: '90bd3d25-7bfa-4d9b-94bc-e1ec637a5707', // id sasha
+      boardId: 'random board id', // board 1 id
+      columnId: '298aa2ce-f96c-4aba-baab-c34c49f5b5c9', // column 2 id
+    },
   ],
 };
