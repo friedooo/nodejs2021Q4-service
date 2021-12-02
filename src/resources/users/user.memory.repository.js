@@ -1,4 +1,4 @@
-// const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const db = require('../../data/db');
 
 const getAllUsers = () => db.users;
@@ -8,17 +8,19 @@ const getUser = (id) => {
   return user;
 };
 
-// const addItem = (req, reply) => {
-//   const { name } = req.body;
-//   const item = {
-//     id: uuidv4(),
-//     name,
-//   };
+const addUser = (body) => {
+  const { name, login, password } = body;
+  const newUser = {
+    id: uuidv4(),
+    name,
+    login,
+    password,
+  };
 
-//   items = [...items, item];
+  db.users = [...db.users, newUser];
 
-//   reply.code(201).send(item);
-// };
+  return newUser;
+};
 
 // const deleteItem = (req, reply) => {
 //   const { id } = req.params;
@@ -39,4 +41,4 @@ const getUser = (id) => {
 //   reply.send(item);
 // };
 
-module.exports = { getAllUsers, getUser };
+module.exports = { getAllUsers, getUser, addUser };

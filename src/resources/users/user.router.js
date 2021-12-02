@@ -3,6 +3,7 @@
 const {
   getUsersOpts,
   getUserOpts,
+  postUserOpts,
   // getItem,
   // addItem,
   // deleteItem,
@@ -13,6 +14,7 @@ function router(fastify, options, done) {
   // Get all items
   fastify.get('/users', getUsersOpts);
   fastify.get('/users/:id', getUserOpts);
+  fastify.post('/users', postUserOpts);
 
   // // Get single items
   // fastify.get('/items/:id', getItemOpts);

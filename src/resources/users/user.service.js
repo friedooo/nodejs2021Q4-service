@@ -1,7 +1,6 @@
 const usersRepo = require('./user.memory.repository');
 
 const UserGet = {
-  method: 'GET',
   type: 'object',
   properties: {
     id: { type: 'string' },
@@ -11,7 +10,18 @@ const UserGet = {
   },
 };
 
+const UserPost = {
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    name: { type: 'string' },
+    login: { type: 'string' },
+    password: { type: 'string' },
+  },
+};
+
 const getUsersOpts = {
+  method: 'GET',
   schema: {
     response: {
       200: {
@@ -26,6 +36,7 @@ const getUsersOpts = {
 };
 
 const getUserOpts = {
+  method: 'GET',
   schema: {
     response: {
       200: UserGet,
@@ -37,21 +48,25 @@ const getUserOpts = {
   },
 };
 
-// const postItemOpts = {
-//   schema: {
-//     body: {
-//       type: 'object',
-//       required: ['name'],
-//       properties: {
-//         name: { type: 'string' },
-//       },
-//     },
-//     response: {
-//       201: Item,
-//     },
-//   },
-//   handler: addItem,
-// };
+const postUserOpts = {
+  schema: {
+    body: {
+      type: 'object',
+      required: ['name', 'login', 'password'],
+      properties: {
+        name: { type: 'string' },
+        login: { type: 'string' },
+        password: { type: 'string' },
+      },
+    },
+    response: {
+      201: UserPost,
+    },
+  },
+  handler: async (req, reply) => {
+    await reply.send(usersRepo.addUser(req.body));
+  },
+};
 
 // const deleteItemOpts = {
 //   schema: {
@@ -79,4 +94,5 @@ const getUserOpts = {
 module.exports = {
   getUsersOpts,
   getUserOpts,
+  postUserOpts,
 };
