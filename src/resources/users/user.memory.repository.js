@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const db = require('../../data/db');
+const tasksRepo = require('../boards/tasks/task.memory.repository');
 
 const getAllUsers = () => db.users;
 
@@ -24,6 +25,14 @@ const addUser = (body) => {
 
 const deleteUser = (id) => {
   db.users = db.users.filter((user) => user.id !== id);
+
+  // db.tasks = db.tasks.map((task) => {
+  //   if (task.userId === id) {
+  //     task.userId = null;
+  //     return task;
+  //   }
+  // });
+  // tasksRepo.updateTask()
   return `user ${id} has been removed`;
 };
 

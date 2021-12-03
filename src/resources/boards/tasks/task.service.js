@@ -60,7 +60,7 @@ const postTaskOpts = {
         'description',
         'userId',
         // 'boardId',
-        'columnId',
+        // 'columnId',
       ],
       properties: {
         title: { type: 'string' },

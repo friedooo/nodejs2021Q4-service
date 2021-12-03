@@ -33,6 +33,10 @@ const deleteTask = (taskId) => {
   return `task ${taskId} has been removed`;
 };
 
+const deleteTasksOfBoard = (boardId) => {
+  db.tasks = db.tasks.filter((task) => task.boardId !== boardId);
+};
+
 const updateTask = (boardId, taskId, body) => {
   const id = taskId;
   db.tasks = db.tasks.map((task) =>
@@ -48,4 +52,5 @@ module.exports = {
   addTask,
   deleteTask,
   updateTask,
+  deleteTasksOfBoard,
 };

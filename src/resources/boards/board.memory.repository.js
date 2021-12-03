@@ -1,5 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
+const { tasks } = require('../../data/db');
 const db = require('../../data/db');
+const tasksRepo = require('./tasks/task.memory.repository');
 
 const getAllBoards = () => db.boards;
 
@@ -23,6 +25,7 @@ const addBoard = (body) => {
 
 const deleteBoard = (id) => {
   db.boards = db.boards.filter((board) => board.id !== id);
+  tasksRepo.deleteTasksOfBoard(id);
   return `board ${id} has been removed`;
 };
 
