@@ -37,6 +37,7 @@ const deletedUserCase = (userId) => {
   db.tasks = db.tasks.map((task) => {
     if (task.userId !== undefined) {
       if (task.userId === userId) {
+        // eslint-disable-next-line no-param-reassign
         task.userId = null;
         return task;
       }
