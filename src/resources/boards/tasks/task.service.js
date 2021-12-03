@@ -99,22 +99,24 @@ const deleteTaskOpts = {
   },
 };
 
-// const updateBoardOpts = {
-//   method: 'PUT',
-//   schema: {
-//     response: {
-//       200: Board,
-//     },
-//   },
-//   handler: async (req, reply) => {
-//     const { id } = await req.params;
-//     await reply.send(boardsRepo.updateBoard(id, req.body));
-//   },
-// };
+const updateTaskOpts = {
+  method: 'PUT',
+  schema: {
+    response: {
+      200: Task,
+    },
+  },
+  handler: async (req, reply) => {
+    const boardId = req.url.split('/')[2];
+    const taskId = req.url.split('/')[4];
+    await reply.send(tasksRepo.updateTask(boardId, taskId, req.body));
+  },
+};
 
 module.exports = {
   getTasksOpts,
   getTaskOpts,
   postTaskOpts,
   deleteTaskOpts,
+  updateTaskOpts,
 };

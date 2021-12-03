@@ -33,18 +33,19 @@ const deleteTask = (taskId) => {
   return `task ${taskId} has been removed`;
 };
 
-// const updateBoard = (id, body) => {
-//   db.boards = db.boards.map((board) =>
-//     board.id === id ? { id, ...body } : board
-//   );
-//   const board = db.boards.find((elem) => elem.id === id);
-
-//   return board;
-// };
+const updateTask = (boardId, taskId, body) => {
+  const id = taskId;
+  db.tasks = db.tasks.map((task) =>
+    task.id === id ? { id, boardId, ...body } : task
+  );
+  const task = db.tasks.find((elem) => elem.id === id);
+  return task;
+};
 
 module.exports = {
   getAllTasks,
   getTask,
   addTask,
   deleteTask,
+  updateTask,
 };
