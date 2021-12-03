@@ -1,5 +1,4 @@
 const { v4: uuidv4 } = require('uuid');
-const { tasks } = require('../../data/db');
 const db = require('../../data/db');
 const tasksRepo = require('./tasks/task.memory.repository');
 

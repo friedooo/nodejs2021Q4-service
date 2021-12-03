@@ -1,8 +1,8 @@
 const { v4: uuidv4 } = require('uuid');
 const db = require('../../../data/db');
 
-const getAllTasks = (boardId) => db.tasks; // Вариант для тестов
-// db.tasks.filter((task) => task.boardId === boardId); // Более правильный вариант
+const getAllTasks = () => db.tasks; // Вариант для тестов
+// db.tasks.filter((task) => task.boardId === boardId); // Более правильный вариант. !!в параметры закинуть boardId!!
 
 const getTask = (boardId, taskId) => {
   const task = db.tasks.find(
