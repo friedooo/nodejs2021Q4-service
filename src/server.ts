@@ -1,22 +1,24 @@
-const fastify = require('fastify')({ logger: false });
+import fastify from 'fastify';
 const { PORT } = require('./common/config');
 
-// fastify.register(require('fastify-swagger'), {
-//   exposeRoute: true,
-//   routePrefix: '/docs',
-//   swagger: {
-//     info: { title: 'fastify-api' },
-//   },
-// });
+const f = fastify();
 
-fastify.register(require('./resources/users/user.router'));
-fastify.register(require('./resources/boards/board.router'));
+f.register(require('fastify-swagger'), {
+  exposeRoute: true,
+  routePrefix: '/docs',
+  swagger: {
+    info: { title: 'fastify-api' },
+  },
+});
+
+f.register(require('./resources/users/user.router'));
+f.register(require('./resources/boards/board.router'));
 
 const start = async () => {
   try {
-    await fastify.listen(PORT);
+    await f.listen(PORT);
   } catch (error) {
-    fastify.log.error(error);
+    f.log.error(error);
     process.exit(1);
   }
 };
