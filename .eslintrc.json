@@ -13,7 +13,7 @@
   },
   "parserOptions": {
     "project": "./tsconfig.json",
-    "tsconfigRootDir": "__dirname",
+    "tsconfigRootDir": "./",
     "sourceType": "module",
     "ecmaVersion": 2021,
     "createDefaultProgram": true,
@@ -25,14 +25,14 @@
     "noInlineConfig": true,
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".ts"],
-      },
+        "extensions": [".js", ".ts"]
+      }
     },
     "node": {
      " allowModules": ["electron"],
       "resolvePaths": ["__dirname"],
-      "tryExtensions": [".js", ".ts"],
-    },
+      "tryExtensions": [".js", ".ts"]
+    }
   },
   "extends": [
     "eslint:recommended",
@@ -50,6 +50,6 @@
     "no-param-reassign": 0,
     "tsdoc/syntax": "error",
     "@typescript-eslint/no-explicit-any": ["error"],
-  "'lines-between-class-members":"'off"
+    "lines-between-class-members":"off"
   }
 }

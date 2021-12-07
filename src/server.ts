@@ -1,4 +1,5 @@
 import fastify from 'fastify';
+
 const { PORT } = require('./common/config');
 
 const f = fastify();
