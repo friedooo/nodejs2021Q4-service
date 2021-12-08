@@ -1,5 +1,3 @@
-// const User = require('./user.model');
-
 const {
   getUsersOpts,
   getUserOpts,
@@ -8,7 +6,7 @@ const {
   updateUserOpts,
 } = require('./user.service');
 
-function userRouter(fastify, options, done) {
+function userRouter(fastify, options, done):void {
   fastify.get('/users', getUsersOpts);
   fastify.get('/users/:id', getUserOpts);
   fastify.post('/users', postUserOpts);
@@ -18,4 +16,4 @@ function userRouter(fastify, options, done) {
   done();
 }
 
-module.exports = userRouter;
+export default userRouter;
