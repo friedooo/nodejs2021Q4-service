@@ -1,67 +1,76 @@
-const DB = require('../../database');
+const { v4: uuidv4 } = require('uuid');
+const db = require('../../data/db');
 
-const TABLE = "Tasks";
+const getAllTasks = () => db.tasks;
 
-const getAll = (boardId) => {
-  const board = DB.getEntityById('Boards', boardId);
-
-  if (!board) {
-    throw new Error(`Board with id ${boardId} not found`);
-  }
-
-  return DB.getAllEntities(TABLE);
-}
-
-const getById = (boardId, taskId) => {
-  const board = DB.getEntityById('Boards', boardId);
-
-  if (!board) {
-    throw new Error(`Board with id ${boardId} not found`);
-  }
-
-  const task = DB.getEntityById(TABLE, taskId);
-
-  if (!task) {
-    throw new Error(`Task with id ${taskId} not found`);
-  }
-
+const getTask = (boardId, taskId) => {
+  const task = db.tasks.find(
+    (elem) => elem.boardId === boardId && elem.id === taskId
+  );
   return task;
-}
+};
 
 const create = (boardId, data) => {
-  const board = DB.getEntityById('Boards', boardId);
+  const { title, order, description, userId, columnId } = data;
+  const newTask = {
+    id: uuidv4(),
+    title,
+    order,
+    description,
+    userId,
+    boardId,
+    columnId,
+  };
 
-  if (!board) {
-    throw new Error(`Board with id ${boardId} not found`);
-  }
+  db.tasks = [...db.tasks, newTask];
 
-  return DB.createEntity(TABLE, data);
-}
+  return newTask;
+};
 
 const update = (boardId, taskId, data) => {
-  const board = DB.getEntityById('Boards', boardId);
-
-  if (!board) {
-    throw new Error(`Board with id ${boardId} not found`);
-  }
-  
-  const updatedTask = DB.updateEntity(TABLE, taskId, data);
-  
-  if (!updatedTask) {
-    throw new Error(`Task with id ${taskId} not found`);
-  }
-
-  return updatedTask;
+  console.log(data);
+  const id = taskId;
+  db.tasks = db.tasks.map((task) => {
+    if (task.id === id) {
+      return {
+        ...data,
+        id: taskId,
+        boardId,
+      };
+    }
+    return task;
+  });
+  const task = db.tasks.find((elem) => elem.id === taskId);
+  return task;
 };
 
 const remove = (taskId) => {
-  const task = DB.getEntityById(TABLE, taskId);
+  db.tasks = db.tasks.filter((task) => task.id !== taskId);
+  return `task ${taskId} has been removed`;
+};
 
-  if (!task) {
-    throw new Error(`Task with id ${task} not found`);
-  }
+const deletedUserCase = (userId) => {
+  db.tasks = db.tasks.map((task) => {
+    if (task.userId !== undefined) {
+      if (task.userId === userId) {
+        task = { ...task, userId: null };
+        return task;
+      }
+    }
+    return task;
+  });
+};
 
-  DB.removeEntity(TABLE, taskId);
-}
+const deleteTasksOfBoard = (boardId) => {
+  db.tasks = db.tasks.filter((task) => task.boardId !== boardId);
+};
 
-module.exports = { getAll, getById, create, update, remove };
+module.exports = {
+  getAllTasks,
+  getTask,
+  create,
+  update,
+  remove,
+  deletedUserCase,
+  deleteTasksOfBoard,
+};
