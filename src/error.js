@@ -4,15 +4,15 @@ const errorHandler = (err, req, res, next) => {
   }
 
   next();
-}
+};
 
 const responceWrapper = async (res, cb) => {
   try {
     await cb();
-  } catch(err) {
+  } catch (err) {
     res.status(404).send({ message: err.message });
   }
-}
+};
 
 module.exports = {
   errorHandler,

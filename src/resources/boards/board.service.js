@@ -2,12 +2,18 @@ const boardsRepo = require('./board.memory.repository');
 
 const getAllBoards = async () => boardsRepo.getAllBoards();
 
-const getById = async (id) => boardsRepo.getById(id);
+const getBoard = async (id) => boardsRepo.getBoard(id);
 
-const create = async (data) => boardsRepo.create(data);
+const createBoard = async (data) => boardsRepo.createBoard(data);
 
-const update = async (id, data) => boardsRepo.update(id, data);
+const updateBoard = async (id, data) => boardsRepo.updateBoard(id, data);
 
-const remove = async (id) => boardsRepo.remove(id);
+const removeBoard = async (id) => boardsRepo.removeBoard(id);
 
-module.exports = { getAllBoards, getById, create, update, remove };
+module.exports = {
+  getAllBoards,
+  getBoard,
+  createBoard,
+  updateBoard,
+  removeBoard,
+};

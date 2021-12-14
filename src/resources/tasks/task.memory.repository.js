@@ -7,10 +7,14 @@ const getTask = (boardId, taskId) => {
   const task = db.tasks.find(
     (elem) => elem.boardId === boardId && elem.id === taskId
   );
+
+  if (!task) {
+    throw new Error(`Task with ID ${taskId} not found`);
+  }
   return task;
 };
 
-const create = (boardId, data) => {
+const createTask = (boardId, data) => {
   const { title, order, description, userId, columnId } = data;
   const newTask = {
     id: uuidv4(),
@@ -27,8 +31,7 @@ const create = (boardId, data) => {
   return newTask;
 };
 
-const update = (boardId, taskId, data) => {
-  console.log(data);
+const updateTask = (boardId, taskId, data) => {
   const id = taskId;
   db.tasks = db.tasks.map((task) => {
     if (task.id === id) {
@@ -44,7 +47,11 @@ const update = (boardId, taskId, data) => {
   return task;
 };
 
-const remove = (taskId) => {
+const removeTask = (taskId) => {
+  const taskToDelete = db.tasks.find((elem) => elem.id === taskId);
+  if (!taskToDelete) {
+    throw new Error(`Task with ID ${taskId} not found`);
+  }
   db.tasks = db.tasks.filter((task) => task.id !== taskId);
   return `task ${taskId} has been removed`;
 };
@@ -68,9 +75,9 @@ const deleteTasksOfBoard = (boardId) => {
 module.exports = {
   getAllTasks,
   getTask,
-  create,
-  update,
-  remove,
+  createTask,
+  updateTask,
+  removeTask,
   deletedUserCase,
   deleteTasksOfBoard,
 };

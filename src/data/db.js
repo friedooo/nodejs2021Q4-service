@@ -9,6 +9,7 @@ module.exports = {
   ],
   boards: [
     {
+      id: 'ac572361-a127-4ea2-aee0-e38365a199d2',
       title: 'Autotest board',
       columns: [
         { title: 'Backlog', order: 1 },

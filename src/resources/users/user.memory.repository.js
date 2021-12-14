@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const db = require('../../data/db');
+const tasksRepo = require('../tasks/task.memory.repository');
 
 const getAllUsers = () => db.users;
 
@@ -8,7 +9,7 @@ const getUser = (id) => {
   return user;
 };
 
-const addUser = (data) => {
+const createUser = (data) => {
   const { name, login, password } = data;
   const newUser = {
     id: uuidv4(),
@@ -28,10 +29,10 @@ const updateUser = (id, data) => {
   return user;
 };
 
-const deleteUser = (id) => {
+const removeUser = (id) => {
   db.users = db.users.filter((user) => user.id !== id);
-  // tasksRepo.deletedUserCase(id);
+  tasksRepo.deletedUserCase(id);
   return `user ${id} has been removed`;
 };
 
-module.exports = { getAllUsers, getUser, addUser, updateUser, deleteUser };
+module.exports = { getAllUsers, getUser, createUser, updateUser, removeUser };

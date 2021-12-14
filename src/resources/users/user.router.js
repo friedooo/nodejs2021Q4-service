@@ -18,7 +18,7 @@ router.route('/:id').get(async (req, res) => {
 
 router.route('/').post(async (req, res) => {
   // responceWrapper(res, async () => {
-  const user = await usersService.create(User.fromRequest(req.body));
+  const user = await usersService.createUser(User.fromRequest(req.body));
   res.status(201).send(User.toResponse(user));
   // });
 });
@@ -26,7 +26,7 @@ router.route('/').post(async (req, res) => {
 router.route('/:id').put(async (req, res) => {
   // responceWrapper(res, async () => {
   const { id } = req.params;
-  const user = await usersService.update(id, User.fromRequest(req.body));
+  const user = await usersService.updateUser(id, User.fromRequest(req.body));
   res.status(200).send(User.toResponse(user));
   // });
 });
@@ -34,7 +34,7 @@ router.route('/:id').put(async (req, res) => {
 router.route('/:id').delete(async (req, res) => {
   // responceWrapper(res, async () => {
   const { id } = req.params;
-  await usersService.remove(id);
+  await usersService.removeUser(id);
   res.status(204).send();
   // });
 });

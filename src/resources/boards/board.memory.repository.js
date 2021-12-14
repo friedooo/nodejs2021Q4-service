@@ -1,14 +1,19 @@
 const { v4: uuidv4 } = require('uuid');
 const db = require('../../data/db');
+const tasksRepo = require('../tasks/task.memory.repository');
 
 const getAllBoards = () => db.boards;
 
-const getById = (id) => {
+const getBoard = (id) => {
   const board = db.boards.find((elem) => elem.id === id);
+
+  if (!board) {
+    throw new Error(`Board with ID ${id} not found`);
+  }
   return board;
 };
 
-const create = (data) => {
+const createBoard = (data) => {
   const { title, columns } = data;
   const newBoard = {
     id: uuidv4(),
@@ -21,7 +26,7 @@ const create = (data) => {
   return newBoard;
 };
 
-const update = (id, data) => {
+const updateBoard = (id, data) => {
   db.boards = db.boards.map((board) =>
     board.id === id ? { id, ...data } : board
   );
@@ -30,10 +35,16 @@ const update = (id, data) => {
   return board;
 };
 
-const remove = (id) => {
+const removeBoard = (id) => {
   db.boards = db.boards.filter((board) => board.id !== id);
-  // tasksRepo.deleteTasksOfBoard(id);
+  tasksRepo.deleteTasksOfBoard(id);
   return `board ${id} has been removed`;
 };
 
-module.exports = { getAllBoards, getById, create, update, remove };
+module.exports = {
+  getAllBoards,
+  getBoard,
+  createBoard,
+  updateBoard,
+  removeBoard,
+};

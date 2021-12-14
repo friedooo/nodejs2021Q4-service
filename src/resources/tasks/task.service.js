@@ -4,11 +4,11 @@ const getAllTasks = async (boardId) => tasksRepo.getAllTasks(boardId);
 
 const getTask = async (boardId, taskId) => tasksRepo.getTask(boardId, taskId);
 
-const create = async (boardId, data) => tasksRepo.create(boardId, data);
+const createTask = async (boardId, data) => tasksRepo.createTask(boardId, data);
 
-const update = async (boardId, taskId, data) =>
-  tasksRepo.update(boardId, taskId, data);
+const updateTask = async (boardId, taskId, data) =>
+  tasksRepo.updateTask(boardId, taskId, data);
 
-const remove = async (taskId) => tasksRepo.remove(taskId);
+const removeTask = async (taskId) => tasksRepo.removeTask(taskId);
 
-module.exports = { getAllTasks, getTask, create, update, remove };
+module.exports = { getAllTasks, getTask, createTask, updateTask, removeTask };
