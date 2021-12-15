@@ -1,15 +1,22 @@
 // import { getAllBoards, getBoard, createBoard, updateBoard, removeBoard } from './board.memory.repository';
-import { getAll } from './board.memory.repository';
+import {
+  getAll,
+  getById,
+  create,
+  update,
+  remove,
+} from './board.memory.repository';
+import { Board, IBoard } from './board.model';
 
 const getAllBoards = async () => getAll();
 
-// const getBoard = async (id) => boardsRepo.getBoard(id);
+const getBoard = async (id: string) => getById(id);
 
-// const createBoard = async (data) => boardsRepo.createBoard(data);
+const createBoard = async (data: IBoard) => create(data);
 
-// const updateBoard = async (id, data) => boardsRepo.updateBoard(id, data);
+const updateBoard = async (id: string, data: IBoard) => update(id, data);
 
-// const removeBoard = async (id) => boardsRepo.removeBoard(id);
+const removeBoard = async (id: string) => remove(id);
 
 // module.exports = {
 //   getAllBoards,
@@ -19,4 +26,4 @@ const getAllBoards = async () => getAll();
 //   removeBoard,
 // };
 
-export { getAllBoards };
+export { getAllBoards, getBoard, createBoard, updateBoard, removeBoard };
