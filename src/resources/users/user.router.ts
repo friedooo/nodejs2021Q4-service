@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction, Router } from 'express';
+import express, { Request, Response, Router } from 'express';
 
 import { User } from './user.model';
 import { responseWrapper } from '../../error';

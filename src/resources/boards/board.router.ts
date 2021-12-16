@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction, Router } from 'express';
+import express, { Request, Response, Router } from 'express';
 
 import { responseWrapper } from '../../error';
 import {
@@ -8,7 +8,6 @@ import {
   updateBoard,
   removeBoard,
 } from './board.service';
-import { Board, IBoard } from './board.model';
 
 const router: Router = express.Router();
 

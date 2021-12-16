@@ -41,6 +41,7 @@
       "allowModules": [],
       "resolvePaths": ["./src"],
       "tryExtensions": [".js",".ts", ".json", ".node"]
-  }]
+  }],
+  "no-param-reassign": 0
   }
 }

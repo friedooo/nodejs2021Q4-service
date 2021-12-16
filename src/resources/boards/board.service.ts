@@ -6,7 +6,7 @@ import {
   update,
   remove,
 } from './board.memory.repository';
-import { Board, IBoard } from './board.model';
+import { IBoard } from './board.model';
 
 const getAllBoards = async () => getAll();
 

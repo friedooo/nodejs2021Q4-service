@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Column, IColumn } from './column.model';
+import { IColumn } from './column.model';
 
 interface IBoard {
   id: string;
