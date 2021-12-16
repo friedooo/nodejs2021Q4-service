@@ -5,28 +5,34 @@ interface ITask {
   title: string;
   order: number;
   description: string;
-  userId: string | null;
-  boardId: string | null;
-  columnId: string | null;
+  userId: string;
+  boardId: string;
+  columnId: string;
 }
 class Task implements ITask {
   id?: string;
-  title: string;
-  order: number;
-  description: string;
-  userId: string | null;
-  boardId: string | null;
-  columnId: string | null;
 
-  constructor(
-    id: string,
-    title: string,
-    order: number,
-    description: string,
-    userId: string | null,
-    boardId: string | null,
-    columnId: string | null
-  ) {
+  title: string;
+
+  order: number;
+
+  description: string;
+
+  userId: string;
+
+  boardId: string;
+
+  columnId: string;
+
+  constructor({
+    id = uuidv4(),
+    title,
+    order,
+    description,
+    userId,
+    boardId,
+    columnId,
+  }: ITask) {
     this.id = id;
     this.title = title;
     this.order = order;

@@ -23,9 +23,9 @@ const db = {
       title: 'TASK',
       order: 0,
       description: 'make people happier',
-      userId: null,
+      userId: 'asdadad',
       boardId: 'ac572361-a127-4ea2-aee0-e38365a199d2',
-      columnId: null,
+      columnId: 'asdadad',
     },
   ],
 };

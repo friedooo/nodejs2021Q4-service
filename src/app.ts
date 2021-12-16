@@ -33,6 +33,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 app.use('/users', userRouter);
 app.use('/boards', boardRouter);
-boardRouter.use('/:boardId/tasks', taskRouter);
+boardRouter.use('/', taskRouter);
 
 export default app;
