@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import db from '../../data/db';
 import { IBoard } from './board.model';
-// const tasksRepo = require('../tasks/task.memory.repository');
+import { deleteTasksOfBoard } from '../tasks/task.memory.repository';
 
 const getAll = () => db.boards;
 
@@ -39,7 +39,7 @@ const update = (id: string, data: IBoard) => {
 
 const remove = (id: string) => {
   db.boards = db.boards.filter((board) => board.id !== id);
-  // tasksRepo.deleteTasksOfBoard(id);
+  deleteTasksOfBoard(id);
   return `board ${id} has been removed`;
 };
 

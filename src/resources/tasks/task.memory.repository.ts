@@ -23,7 +23,7 @@ const create = (boardId: string, data: ITask) => {
     boardId,
   };
 
-  db.tasks.push(newTask);
+  db.tasks.push(newTask as never);
 
   return newTask;
 };
@@ -34,7 +34,7 @@ const update = (boardId: string, taskId: string, data: ITask) => {
     if (task.id === id) {
       return {
         ...data,
-        id: taskId,
+        id,
         boardId,
       };
     }
@@ -57,7 +57,7 @@ const deletedUserCase = (userId: string) => {
   db.tasks = db.tasks.map((task) => {
     if (task.userId !== undefined) {
       if (task.userId === userId) {
-        task = { ...task, userId: null };
+        task = { ...task, userId: null as never };
         return task;
       }
     }
@@ -65,8 +65,16 @@ const deletedUserCase = (userId: string) => {
   });
 };
 
-// const deleteTasksOfBoard = (boardId) => {
-//   db.tasks = db.tasks.filter((task) => task.boardId !== boardId);
-// };
+const deleteTasksOfBoard = (boardId: string) => {
+  db.tasks = db.tasks.filter((task) => task.boardId !== boardId);
+};
 
-export { getAll, getById, create, update, remove, deletedUserCase };
+export {
+  getAll,
+  getById,
+  create,
+  update,
+  remove,
+  deletedUserCase,
+  deleteTasksOfBoard,
+};

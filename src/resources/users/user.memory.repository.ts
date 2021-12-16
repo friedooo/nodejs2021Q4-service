@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import db from '../../data/db';
 
-// const tasksRepo = require('../tasks/task.memory.repository');
+import { deletedUserCase } from '../tasks/task.memory.repository';
 import { IUser } from './user.model';
 
 const getAll = () => db.users;
@@ -39,7 +39,7 @@ const update = (id: string, data: IUser) => {
 
 const remove = (id: string) => {
   db.users = db.users.filter((user) => user.id !== id);
-  // tasksRepo.deletedUserCase(id);
+  deletedUserCase(id);
   return `user ${id} has been removed`;
 };
 
