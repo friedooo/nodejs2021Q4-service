@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeBoard = exports.updateBoard = exports.createBoard = exports.getBoard = exports.getAllBoards = void 0;
+// import { getAllBoards, getBoard, createBoard, updateBoard, removeBoard } from './board.memory.repository';
+const board_memory_repository_1 = require("./board.memory.repository");
+const getAllBoards = async () => (0, board_memory_repository_1.getAll)();
+exports.getAllBoards = getAllBoards;
+const getBoard = async (id) => (0, board_memory_repository_1.getById)(id);
+exports.getBoard = getBoard;
+const createBoard = async (data) => (0, board_memory_repository_1.create)(data);
+exports.createBoard = createBoard;
+const updateBoard = async (id, data) => (0, board_memory_repository_1.update)(id, data);
+exports.updateBoard = updateBoard;
+const removeBoard = async (id) => (0, board_memory_repository_1.remove)(id);
+exports.removeBoard = removeBoard;

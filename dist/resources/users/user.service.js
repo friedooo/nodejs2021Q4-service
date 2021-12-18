@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeUser = exports.updateUser = exports.createUser = exports.getUser = exports.getAllUsers = void 0;
+// import  { getAllUsers, getUser, createUser, updateUser, removeUser } from './user.memory.repository';
+const user_memory_repository_1 = require("./user.memory.repository");
+const getAllUsers = async () => (0, user_memory_repository_1.getAll)();
+exports.getAllUsers = getAllUsers;
+const getUser = async (id) => (0, user_memory_repository_1.getUserById)(id);
+exports.getUser = getUser;
+const createUser = async (data) => (0, user_memory_repository_1.create)(data);
+exports.createUser = createUser;
+const updateUser = async (id, data) => (0, user_memory_repository_1.update)(id, data);
+exports.updateUser = updateUser;
+const removeUser = async (id) => (0, user_memory_repository_1.remove)(id);
+exports.removeUser = removeUser;
