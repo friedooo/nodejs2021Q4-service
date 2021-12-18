@@ -1,5 +1,26 @@
 # RS School REST service
 
+## IMPORTANT
+
+Для запуска через ts-node (запуск сервера напрямую из src) необходимо использовать скрипт:
+
+```
+ npm run dev
+```
+
+Для запуска build версии её можно сначала собрать, используя
+
+```
+npm run build
+```
+
+(результ компиляции будет находится в папке dist).
+После чего запустить билд с помощью
+
+```
+npm start
+```
+
 ## Prerequisites
 
 - Git - [Download & Install Git](https://git-scm.com/downloads).
