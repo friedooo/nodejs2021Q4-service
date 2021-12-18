@@ -19,15 +19,6 @@ class Board implements IBoard {
     this.title = title;
     this.columns = columns;
   }
-
-  // static fromRequest(body: IBoard) {
-  //   return new Board(body);
-  // }
-
-  // static toResponse(user: IBoard) {
-  //   const { id, title, columns } = user;
-  //   return { id, title, columns };
-  // }
 }
 
 export { Board, IBoard };

@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeTask = exports.updateTask = exports.createTask = exports.getTask = exports.getAllTasks = void 0;
+const task_memory_repository_1 = require("./task.memory.repository");
+const getAllTasks = async () => (0, task_memory_repository_1.getAll)();
+exports.getAllTasks = getAllTasks;
+const getTask = async (boardId, taskId) => (0, task_memory_repository_1.getById)(boardId, taskId);
+exports.getTask = getTask;
+const createTask = async (boardId, data) => (0, task_memory_repository_1.create)(boardId, data);
+exports.createTask = createTask;
+const updateTask = async (boardId, taskId, data) => (0, task_memory_repository_1.update)(boardId, taskId, data);
+exports.updateTask = updateTask;
+const removeTask = async (taskId) => (0, task_memory_repository_1.remove)(taskId);
+exports.removeTask = removeTask;

@@ -41,10 +41,6 @@ class Task implements ITask {
     this.boardId = boardId;
     this.columnId = columnId;
   }
-
-  // static fromRequest(body: ITask) {
-  //   return new Task(body);
-  // }
 }
 
 export { Task, ITask };

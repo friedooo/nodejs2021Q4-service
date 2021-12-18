@@ -8,14 +8,14 @@ const express_1 = __importDefault(require("express"));
 // const swaggerUI = require('swagger-ui-express');
 // const path = require('path');
 // const YAML = require('yamljs');
-// const userRouter = require('./resources/users/user.router');
-// const boardRouter = require('./resources/boards/board.router');
-// const taskRouter = require('./resources/tasks/task.router');
+const user_router_1 = __importDefault(require("./resources/users/user.router"));
+const board_router_1 = __importDefault(require("./resources/boards/board.router"));
+const task_router_1 = __importDefault(require("./resources/tasks/task.router"));
 const app = (0, express_1.default)();
-//const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
+// const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 app.use(express_1.default.json());
 // app.use(morgan('tiny'));
-//app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+// app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/', (req, res, next) => {
     if (req.originalUrl === '/') {
         res.send('Service is running!');
@@ -23,13 +23,13 @@ app.use('/', (req, res, next) => {
     }
     next();
 });
-// app.use((err, req, res, next) => {
-//   if (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-//   next();
-// });
-// app.use('/users', userRouter);
-// app.use('/boards', boardRouter);
-// boardRouter.use('/:boardId/tasks', taskRouter);
+app.use((err, req, res, next) => {
+    if (err) {
+        res.status(500).json({ message: err.message });
+    }
+    next();
+});
+app.use('/users', user_router_1.default);
+app.use('/boards', board_router_1.default);
+board_router_1.default.use('/', task_router_1.default);
 exports.default = app;

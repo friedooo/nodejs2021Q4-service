@@ -1,7 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 
 import { User } from './user.model';
-import { responseWrapper } from '../../error';
+import { responseWrapper } from '../../errorHandler';
 import {
   getAllUsers,
   getUser,

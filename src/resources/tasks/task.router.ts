@@ -1,5 +1,5 @@
 import express, { Request, Response, Router } from 'express';
-import { responseWrapper } from '../../error';
+import { responseWrapper } from '../../errorHandler';
 
 import {
   getAllTasks,
@@ -32,24 +32,12 @@ router
 
 router.route('/:boardId/tasks').post(async (req: Request, res: Response) => {
   const { boardId } = req.params;
-
-  // const task = await createTask(
-  //   boardId,
-  //   Task.fromRequest({ ...req.body, boardId })
-  // );
-
   const task = await createTask(boardId, req.body);
   res.status(201).send(task);
 });
 
 router.route('/:boardId/tasks/:taskId').put(async (req, res) => {
   const { boardId, taskId } = req.params;
-
-  // const task = await updateTask(
-  //   boardId,
-  //   taskId,
-  //   Task.fromRequest({ ...req.body, boardId })
-  // );
   const task = await updateTask(boardId, taskId, req.body);
   res.status(200).send(task);
 });
