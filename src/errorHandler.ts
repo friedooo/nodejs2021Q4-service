@@ -1,4 +1,5 @@
 import { Response } from 'express';
+import logger from './utils/logger';
 
 type CallbackFunction = () => void;
 
@@ -14,6 +15,7 @@ const responseWrapper = async (res: Response, cb: CallbackFunction) => {
   } catch (err) {
     const result = (err as Error).message;
     res.status(404).send({ message: result });
+    logger.error('error');
   }
 };
 
